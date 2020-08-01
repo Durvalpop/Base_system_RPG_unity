@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider))]
 public class ItemInfo : MonoBehaviour
 {
+    public Sprite sprite_icon;
+    public static ItemInfo instance;
     public enum Item_type {weapon, armor, evolutiva, potion, skill, other}
     [Header("Item_Config")]
     public Item_type item_type;
@@ -28,6 +31,7 @@ public class ItemInfo : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         //Linkando este codigo ao Player_Inventory dentro do Game_Manager para atualizar o inventario
         Player_inventory = GameObject.Find("Game_Manager").GetComponent<Player_Inventory>();
     }
@@ -39,19 +43,19 @@ public class ItemInfo : MonoBehaviour
         switch (item_type)
         {
             case Item_type.weapon:
-                item_info = new Weapon(item_info.nome, item_info.descricao, danoValueWeapon, isIsquipped, item_info.model_locale_dir);
+                item_info = new Weapon(item_info.img_icon_item, item_info.img_icon_item_active, sprite_icon, item_info.sprite_icon_active, item_info.nome, item_info.descricao, danoValueWeapon, isIsquipped, item_info.model_locale_dir);
                 break;
             case Item_type.evolutiva:
-                item_info = new Evolutiva(item_info.nome, item_info.descricao, item_qtd, usoMana, item_info.model_locale_dir);
+                item_info = new Evolutiva(item_info.img_icon_item, item_info.img_icon_item_active, sprite_icon, item_info.sprite_icon_active, item_info.nome, item_info.descricao, item_qtd, usoMana, item_info.model_locale_dir);
                 break;
             case Item_type.skill:
-                item_info = new Skill(item_info.nome, item_info.descricao, danoValueMagia, isIsquipped, usoMana,item_info.model_locale_dir);
+                item_info = new Skill(item_info.img_icon_item, item_info.img_icon_item_active, sprite_icon, item_info.sprite_icon_active, item_info.nome, item_info.descricao, danoValueMagia, isIsquipped, usoMana,item_info.model_locale_dir);
                 break;
             case Item_type.potion:
-                item_info = new Potion(item_info.nome, item_info.descricao, liquid_value, isIstackable, item_info.model_locale_dir);
+                item_info = new Potion(item_info.img_icon_item, item_info.img_icon_item_active, sprite_icon, item_info.sprite_icon_active,  item_info.nome, item_info.descricao, liquid_value, isIstackable, item_info.model_locale_dir);
                 break;
             case Item_type.armor:
-                item_info = new Armor(item_info.nome, item_info.descricao, defesa_value, isIsquipped, item_info.model_locale_dir);
+                item_info = new Armor(item_info.img_icon_item, item_info.img_icon_item_active, sprite_icon, item_info.sprite_icon_active, item_info.nome, item_info.descricao, defesa_value, isIsquipped, item_info.model_locale_dir);
                 break;
             default:
                 break;

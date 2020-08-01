@@ -125,8 +125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1bbada084fe4494fa5f4cc13c9030cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite_icon: {fileID: 21300000, guid: 13e829f06036d8b408a519ac56cc7b0e, type: 3}
   item_type: 2
   item_info:
+    img_icon_item: {fileID: 0}
+    img_icon_item_active: {fileID: 0}
+    sprite_icon: {fileID: 0}
+    sprite_icon_active: {fileID: 0}
     nome: liquidSlime
     descricao: erw
     model_locale_dir: 

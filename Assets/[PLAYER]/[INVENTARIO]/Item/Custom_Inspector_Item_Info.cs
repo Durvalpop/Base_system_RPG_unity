@@ -7,7 +7,7 @@ using UnityEditor;
 public class Custom_Inspector_Item_Info : Editor
 {
     ItemInfo item_info;
-    SerializedProperty item_nome, item_descricao, item_type, 
+    SerializedProperty item_nome, item_descricao, item_type, sprite_ico,
         dano_Weapon,
         dano_Skill, uso_Mana,
         qtd_item,
@@ -18,6 +18,7 @@ public class Custom_Inspector_Item_Info : Editor
     private void OnEnable()
     {
         item_info = (ItemInfo)target;
+        sprite_ico = serializedObject.FindProperty("sprite_icon");
         qtd_item = serializedObject.FindProperty("item_qtd");
         item_nome = serializedObject.FindProperty("item_info.nome");
         item_descricao = serializedObject.FindProperty("item_info.descricao");
@@ -35,10 +36,11 @@ public class Custom_Inspector_Item_Info : Editor
         serializedObject.Update();
 
         //Base_de todo e quaisquer tipo de item
+        EditorGUILayout.PropertyField(sprite_ico);
         EditorGUILayout.PropertyField(item_nome);
         EditorGUILayout.PropertyField(item_descricao);
         EditorGUILayout.PropertyField(item_type);
-
+       
         //add novosAtributos_á_diferentes_tipos_de_enum(weapon, potion,armor,magia)
         switch (item_info.item_type)
         {

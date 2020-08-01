@@ -1,0 +1,11 @@
+
+git init
+git config --global user.name "Durvalpop"
+git config --global user.email "durval.jr1999@hotmail.com"
+git status
+git add .
+git status
+git commit -m "first commit"
+git remote add origin https://github.com/Durvalpop/Base_system_RPG_unity.git
+git push -u origin master
+                

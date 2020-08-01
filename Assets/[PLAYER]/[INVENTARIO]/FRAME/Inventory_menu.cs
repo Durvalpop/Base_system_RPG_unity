@@ -178,8 +178,7 @@ public class Inventory_menu : MonoBehaviour
         {
             stats_field.Disable_basic_props();
             stats_field.Disable_specyfic_props();
-        }
-        
+        }        
     }
 
     void Draw_item(Item it) {

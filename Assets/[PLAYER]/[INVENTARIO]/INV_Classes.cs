@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class INV_Classes
 { 
@@ -12,11 +13,17 @@ public class INV_Classes
 [System.Serializable]
 public class Item : IComparable<Item> //Informações_padrão do meu item
 {
+    public Image img_icon_item, img_icon_item_active;
+    public Sprite sprite_icon, sprite_icon_active;
     public string nome, descricao;  //nome(nome), descricao(descrição_do_item) 
     public string model_locale_dir; //localização meu modeloOBJ_3D
      
-    public Item(string c_nome, string c_descricao,string c_model_path)
+    public Item(Image c_image_icon, Image c_icon_active, Sprite c_sprite_icon, Sprite c_sprite_active_icon, string c_nome, string c_descricao,string c_model_path)
     {
+        sprite_icon = c_sprite_icon;
+        sprite_icon_active = c_sprite_active_icon;
+        img_icon_item = c_image_icon;
+        img_icon_item_active = c_icon_active;
         nome = c_nome;
         descricao = c_descricao;
         model_locale_dir = c_model_path;
@@ -35,7 +42,7 @@ public class Weapon : Item , IComparable<Weapon>
     public int dano_Weapon;          //Dano da arma
     public bool isEquipped = false;
 
-    public Weapon(string c_nome, string c_descricao, int c_danoWeapon, bool c_isEquipped, string c_model_locale_dir) : base (c_nome, c_descricao, c_model_locale_dir)
+    public Weapon(Image c_image_icon, Image c_image_icon_active, Sprite c_sprite_icon, Sprite c_sprite_active_icon, string c_nome, string c_descricao, int c_danoWeapon, bool c_isEquipped, string c_model_locale_dir) : base (c_image_icon, c_image_icon_active, c_sprite_icon, c_sprite_active_icon, c_nome, c_descricao, c_model_locale_dir)
     {
         /*nome        = c_nome;
         descricao   = c_descricao;*/
@@ -58,7 +65,7 @@ public class Evolutiva : Item, IComparable<Evolutiva>
     public float usoMana;     //Quanto de mana irá ser usada na minha magia
     public int qtd_item;
 
-    public Evolutiva(string c_nome, string c_descricao, int c_qtd_item, float c_usoMana, string c_model_locale_dir) : base(c_nome, c_descricao, c_model_locale_dir)
+    public Evolutiva(Image c_image_icon, Image c_image_icon_active, Sprite c_sprite_icon, Sprite c_sprite_active_icon, string c_nome, string c_descricao, int c_qtd_item, float c_usoMana, string c_model_locale_dir) : base(c_image_icon, c_image_icon_active, c_sprite_icon, c_sprite_active_icon, c_nome, c_descricao, c_model_locale_dir)
     {
         /*nome       = c_nome;
         descricao  = c_descricao;*/
@@ -83,7 +90,7 @@ public class Skill : Item, IComparable<Skill>
     public float usoMana;     //Quanto de mana irá ser usada na minha magia
     public bool isEquipped = false;
 
-    public Skill(string c_nome, string c_descricao, int c_dano_skill, bool c_isEquipped, float c_usoMana, string c_model_locale_dir) : base(c_nome, c_descricao, c_model_locale_dir)
+    public Skill(Image c_image_icon, Image c_icon_active, Sprite c_sprite_icon, Sprite c_sprite_active_icon, string c_nome, string c_descricao, int c_dano_skill, bool c_isEquipped, float c_usoMana, string c_model_locale_dir) : base(c_image_icon, c_icon_active, c_sprite_icon, c_sprite_active_icon, c_nome, c_descricao, c_model_locale_dir)
     {
         /*nome       = c_nome;
         descricao  = c_descricao;*/
@@ -106,8 +113,8 @@ public class Armor : Item , IComparable<Armor>
 {
     public bool isEquipped = false;
     public int defesaValue;
-
-    public Armor(string c_nome, string c_descricao, int c_defesaValue, bool c_isEquipped, string c_model_locale_dir) : base(c_nome, c_descricao, c_model_locale_dir)
+     
+    public Armor(Image c_image_icon, Image c_active_icon, Sprite c_sprite_icon, Sprite c_sprite_active_icon, string c_nome, string c_descricao, int c_defesaValue, bool c_isEquipped, string c_model_locale_dir) : base(c_image_icon, c_active_icon, c_sprite_icon, c_sprite_active_icon, c_nome, c_descricao, c_model_locale_dir)
     {
        /* nome        = c_nome;
         descricao   = c_descricao;*/
@@ -131,7 +138,7 @@ public class Potion : Item, IComparable<Potion>
     public bool isStackable = false;              //esta sendo usado
     public int Qtd_Liquid_Value;          //valor quantidade de liquido
 
-    public Potion(string c_nome, string c_descricao, int c_qtdLiquidValue, bool c_isStackable, string c_model_locale_dir) : base(c_nome, c_descricao, c_model_locale_dir)
+    public Potion(Image c_image_icon, Image c_active_icon, Sprite c_sprite_icon, Sprite c_sprite_active_icon, string c_nome, string c_descricao, int c_qtdLiquidValue, bool c_isStackable, string c_model_locale_dir) : base(c_image_icon, c_active_icon, c_sprite_icon, c_sprite_active_icon, c_nome, c_descricao, c_model_locale_dir)
     {
        /* nome             = c_nome;
         descricao        = c_descricao;*/
