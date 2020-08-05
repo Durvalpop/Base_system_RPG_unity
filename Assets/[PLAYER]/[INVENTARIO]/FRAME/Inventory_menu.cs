@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEditor;
@@ -10,6 +11,7 @@ using UnityEngine.UI;
 
 public class Inventory_menu : MonoBehaviour
 {
+    #region Config Stats_field(informações de escritas)
     [System.Serializable]
     public class Stats_field
     {
@@ -85,25 +87,45 @@ public class Inventory_menu : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    
+    #region config Slot
+    [System.Serializable]
+    public class Slot_Equipped
+    {
+        public GameObject opcoesObj;//Objecto com botão equipped e desequip
+
+        protected void Start()
+        {
+            opcoesObj.SetActive(false);
+        }
+
+    }
+    #endregion
+
+    #region Variaveis
+    [Header("Frame")]
     public int active_frame;
     public Transform prev_item_transform;
     public Stats_field stats_field;
+    public SlotBehaviour slot_field;
     [HideInInspector]
     public List<Item_Frame> item_frames;
     public GameObject item_frame, prev_item;
     int rect_size;
+    [Header("Color")]
     public Color icon_active, icon_not_active;
+
     public enum Icon_filter { all, weapon, evolutiva, skill, armor, potion, other};
     public Icon_filter icon_filter;
     public Inventory_icon[] icons;
 
+    [Header("Rect")]
     GameObject tmp;
     RectTransform item_frame_rt, tmp_rt, rect_trans;
     Item_Frame tmp_if;
     Player_Inventory pi;
-
+    #endregion 
 
     protected void Awake()
     {
@@ -116,7 +138,7 @@ public class Inventory_menu : MonoBehaviour
     {
         Action_icon(0);
         Disable_icons();
-        
+        //opções de botoes(equip, desequip) inicia no false
     }
 
     private void Update_inventory() {

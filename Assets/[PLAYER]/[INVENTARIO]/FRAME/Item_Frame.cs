@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Item_Frame : MonoBehaviour
+public class Item_Frame : MonoBehaviour, IDragHandler, IDropHandler
 {
-
+    public static Item_Frame instance;
     public Image imgItem, imgActive;
     public Sprite sprite_active_icon, null_icon;
     public int index;
@@ -15,6 +16,7 @@ public class Item_Frame : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         im = GameObject.Find("Frame_Item_Content").GetComponent<Inventory_menu>();
     }
 
@@ -42,23 +44,47 @@ public class Item_Frame : MonoBehaviour
             im.stats_field.Show_specyfic_props(item);
             im.stats_field.Show_basic_props(item);
 
-
-            
-            //Set__Sprite_TO_Image_____________________________________________________________________
-            item.img_icon_item_active.GetComponent<Image>().sprite = item.sprite_icon_active;
-
+            item.img_icon_item_active.GetComponent<Image>().sprite = null_icon;
         }
 
     }
 
+    #region BTN_POINTER_ITEM_ATUAL
     public void EnterPointer()
     {
+        Debug.Log("EnterPointer");
         item.img_icon_item_active.GetComponent<Image>().sprite = item.sprite_icon_active;
     }
     public void ExitPointer()
     {
-
-        item.img_icon_item_active.GetComponent<Image>().sprite = null_icon;
+        Debug.Log("ExitPointer");
+       // item.img_icon_item_active.GetComponent<Image>().sprite = null_icon;
     }
+
+    
+    #endregion
+
+    #region Slot_Config
+
+    public void RemoveToListGetIntoSlot()
+    {
+       
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        Debug.Log("OnDrag");
+        if(item != null)
+        {
+     
+            item.sprite_icon = ItemInfo.instance.sprite_icon;
+        }
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        Debug.Log("OnDrop");
+    }
+    #endregion
 }
 

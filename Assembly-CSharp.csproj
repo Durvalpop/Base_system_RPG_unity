@@ -65,6 +65,7 @@
     <Compile Include="Assets\[PLAYER]\[INVENTARIO]\Item\Custom_Inspector_Item_Info.cs" />
     <Compile Include="Assets\[PLAYER]\[INVENTARIO]\FRAME\RotateMY_Item\Prev_object_rotating.cs" />
     <Compile Include="Assets\[PLAYER]\[INVENTARIO]\FRAME\RotateMY_Item\Rot_Item.cs" />
+    <Compile Include="Assets\[PLAYER]\[INVENTARIO]\FRAME\slotConfg\SlotBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
